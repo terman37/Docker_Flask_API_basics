@@ -1,10 +1,15 @@
 # Flask_Rest_API
 
+On ubuntu server 18.04
+
+
+
 Install python
 
 ```
 sudo apt install python3.7
 sudo apt install python-pip
+sudo apt install python3.7-venv
 ```
 
 upgrade pip
@@ -13,21 +18,32 @@ upgrade pip
 python -m pip install --upgrade pip
 ```
 
-create venv
+structure
 
 ```
-python -m venv c:\MY_DATAS\MyGIT\Flask_Rest_API\myvenv
+mkdir flask_app
+mkdir venvs
 ```
 
-activate venv windows
+
+
+Create venv
 
 ```
-myvenv\Scripts\activate.bat
+python3.7 -m venv venvs/flask_env
 ```
 
-install flask-restful
+Activate venv windows
 
 ```
-python -m pip install --upgrade pip
+source venvs/flask_env/bin/activate
+```
+
+
+
+install flask
+
+```
+
 ```
 
