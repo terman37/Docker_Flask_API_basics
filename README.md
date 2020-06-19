@@ -4,7 +4,9 @@ Basic Flask API, using a dummy linear regression model (cf training folder)
 
 Running on ubuntu server 18.04 VM.
 
+### Flask/Gunicorn
 
+#### Install/config/test
 
 Install python
 
@@ -20,13 +22,11 @@ upgrade pip
 python -m pip install --upgrade pip
 ```
 
-structure
+Structure
 
 ```bash
 mkdir venvs
 ```
-
-
 
 Create venv
 
@@ -40,6 +40,12 @@ Activate venv windows
 source ~/venvs/flask_env/bin/activate
 ```
 
+Install requirements
+
+```
+pip install -r ~Flask_Rest_API/flask_app/requirements.txt
+```
+
 
 
 Git Clone 
@@ -50,40 +56,7 @@ git config --global user.email=My@email
 git clone https://github.com/terman37/Flask_Rest_API.git
 ```
 
-or create 2 files in ~/flask_app/
-
-App.py:
-
-```python
-from flask import Flask
-
-server = Flask(__name__)
-
-@server.route('/')
-def hello_world():
-    return 'hello world!'
-```
-
-wsgi.pi
-
-```python
-from app import server
-
-if __name__ == "__main__":
-    server.run(host='0.0.0.0', port=8000)
-```
-
-
-
-install requirements
-
-```
-pip install -r ~Flask_Rest_API/flask_app/requirements.txt
-```
-
-
-
-run server
+Run server
 
 ```bash
 cd ~/Flask_Rest_API/flask_app/
@@ -105,3 +78,43 @@ http://<serverIP>:8000/
 ```
 
 should return an amazing "Hello World" :-)
+
+
+
+### Docker
+
+Build the docker container 
+
+from Dockerfile directory run: (**do not forget the dot at the end**)
+
+```
+docker build --tag myfirstflaskapi:v0 .
+```
+
+Check images installed
+
+```
+docker images
+```
+
+Run it: (bind port 80 to 8000 in container)
+
+```
+docker run -d -p 80:8000 myfirstflaskapi:v0
+```
+
+check in browser
+
+```
+localhost/predict/?x=8.65
+```
+
+
+
+
+
+
+
+Next step:
+
+make it lighter using Alpine image if working
