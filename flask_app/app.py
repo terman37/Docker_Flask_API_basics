@@ -14,7 +14,8 @@ def hello_world():
 
 @server.route('/predict/', methods=['GET', 'POST'])
 def predict():
-    xget = request.get_data()
+
+    xget = request.args.get("x")
     print(xget)
     xget = float(xget)
     x = np.array([[xget]])
