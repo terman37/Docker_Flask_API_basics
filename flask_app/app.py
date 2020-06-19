@@ -15,8 +15,8 @@ def hello_world():
 @server.route('/predict/', methods=['GET', 'POST'])
 def predict():
     xget = request.args.get("x")
-    print(xget)
     xget = float(xget)
     x = np.array([[xget]])
-    ypred = model.predict(x)
+    ypred = model.predict(x)[0]
+    print("x= %.2f --> y= %.2f" % (xget, ypred))
     return str(ypred)
