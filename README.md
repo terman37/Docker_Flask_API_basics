@@ -1,6 +1,8 @@
 # Flask_Rest_API
 
-On ubuntu server 18.04 VM
+Basic Flask API, using a dummy linear regression model (cf training folder)
+
+Running on ubuntu server 18.04 VM.
 
 
 
@@ -73,17 +75,33 @@ if __name__ == "__main__":
 
 
 
-install flask (in correct venv)
+install requirements
 
-```bash
-pip install flask
-pip install gunicorn
 ```
+pip install -r ~Flask_Rest_API/flask_app/requirements.txt
+```
+
+
 
 run server
 
 ```bash
-cd ~/flask_app/
+cd ~/Flask_Rest_API/flask_app/
 gunicorn -w 1 -b 0.0.0.0:8000 wsgi:server
 ```
 
+
+
+Query the API: (brower or postman...)
+
+```
+http://<serverIP>:8000/predict/?x=3.25
+```
+
+should return a value ;-)
+
+```
+http://<serverIP>:8000/
+```
+
+should return an amazing "Hello World" :-)
