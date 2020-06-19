@@ -20,4 +20,4 @@ def predict():
     xget = float(xget)
     x = np.array([[xget]])
     ypred = model.predict(x)
-    return ypred
+    return str(ypred)
