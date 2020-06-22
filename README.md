@@ -115,6 +115,12 @@ localhost/predict/?x=8.65
 
 
 
-Next step:
+### Tip
 
-make it lighter using Alpine image if working
+- clean docker images/volumes... (all but the ones running)
+
+  ```
+  docker system prune -a
+  ```
+
+  
