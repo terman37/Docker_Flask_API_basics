@@ -1,31 +1,37 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import pickle
 import numpy as np
+import json
+import time
+
+from custlib.custom_transformer import custom_preproc
 
 server = Flask(__name__)
-
-model = pickle.load(open('../training/pipe.pkl', 'rb'))
+pipe = pickle.load(open('../digits_training/model.pkl', 'rb'))
 
 
 @server.route('/')
 def hello_world():
-	
     return 'hello world'
 
 
 @server.route('/predict/', methods=['GET', 'POST'])
 def predict():
-
     # Get request argument
-    xget = request.args.get("x")
+    t1 = time.time()
+    x_get = request.args.get("json")
     try:
-    	xget = float(xget)
-    except TypeError:
-    	print("Bad conversion type")
+        x_full = json.loads(x_get)
+    except Exception as e:
+        print("Bad conversion type")
+        result = e.args[0]
+    else:
+        # Predict
+        y_pred = int(pipe.predict(x_full['image'])[0])
+        # display massage
+        print("%s x= --> y= %.2f" % (x_full['author'],  y_pred))
+        t2 = time.time()
+        result = jsonify(pred=y_pred, duration=t2-t1)
 
-    # Predict
-    ypred = pipe.predict(x)[0]
+    return result
 
-    # display massage
-    print("x= %.2f --> y= %.2f" % (xget, ypred))
-    return str(ypred)
