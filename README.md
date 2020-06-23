@@ -87,26 +87,26 @@ Build the docker container
 
 from Dockerfile directory run: (**do not forget the dot at the end**)
 
-```
+```bash
 docker build --tag myfirstflaskapi:v0 .
 ```
 
 Check images installed
 
-```
+```bash
 docker images
 ```
 
 Run it: (bind port 80 to 8000 in container)
 
-```
+```bash
 docker run -d -p 80:8000 myfirstflaskapi:v0
 ```
 
 check in browser
 
 ```
-localhost/predict/?x=8.65
+localhost/predictln/?x=8.65
 ```
 
 
@@ -119,7 +119,7 @@ localhost/predict/?x=8.65
 
 - clean docker images/volumes... (all but the ones running)
 
-  ```
+  ```bash
   docker system prune -a
   ```
 
