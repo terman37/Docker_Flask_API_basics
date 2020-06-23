@@ -1,7 +1,7 @@
 import numpy as np
 
-class custom_preproc():
-    def __intit__(self):
+class custom_preproc_ln():
+    def __init__(self):
         pass
         
     def fit(self,X,y=None):
