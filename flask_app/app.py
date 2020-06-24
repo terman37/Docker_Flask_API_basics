@@ -1,14 +1,15 @@
 from flask import Flask, request, jsonify
 import pickle
-import numpy as np
+# import numpy as np
 import json
 import time
 
-from custlib.custom_transformer import custom_preproc,  custom_preproc_ln
+# from custlib.custom_transformer import custom_preproc,  custom_preproc_ln
 
 server = Flask(__name__)
 pipe = pickle.load(open('../digits_training/model.pkl', 'rb'))
 pipeln = pickle.load(open('../training/model.pkl', 'rb'))
+
 
 @server.route('/')
 def hello_world():
