@@ -1,4 +1,4 @@
-# Flask_Rest_API
+# Docker_Flask_API_basics
 
 Basic Flask API, using a dummy linear regression model (cf training folder)
 
@@ -11,9 +11,8 @@ Running on ubuntu server 18.04 VM.
 Install python
 
 ```bash
-sudo apt install python3.7
-sudo apt install python-pip
-sudo apt install python3.7-venv
+sudo apt install python3
+sudo apt install python3-pip
 ```
 
 upgrade pip
@@ -46,8 +45,6 @@ Install requirements
 pip install -r ~Flask_Rest_API/flask_app/requirements.txt
 ```
 
-
-
 Git Clone 
 
 ```bash
@@ -63,15 +60,13 @@ cd ~/Flask_Rest_API/flask_app/
 gunicorn -w 1 -b 0.0.0.0:8000 wsgi:server
 ```
 
-
-
 Query the API: (brower or postman...)
 
 ```
-http://<serverIP>:8000/predict/?x=3.25
+http://<serverIP>:8000/predictln/?x=3.25
 ```
 
-should return a value ;-)
+should return a value ;-) in json format ex: {"duration":0.0006844997406005859,"pred":17.703137442608288}
 
 ```
 http://<serverIP>:8000/
@@ -81,9 +76,13 @@ should return an amazing "Hello World" :-)
 
 
 
+
+
 ### Docker
 
-Build the docker container 
+Make it run on Docker:
+
+#### Build the docker container 
 
 from Dockerfile directory run: (**do not forget the dot at the end**)
 
@@ -108,8 +107,6 @@ check in browser
 ```
 localhost/predictln/?x=8.65
 ```
-
-
 
 
 

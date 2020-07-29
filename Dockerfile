@@ -7,12 +7,12 @@
 # NOT WORKING
 
 # with slim buster 371 Mo :-)
-FROM python:3.7.7-slim-buster
+FROM python:3.7-slim-buster
 
-WORKDIR /Flask_Rest_API
+WORKDIR /app
 # COPY SRC DEST
 COPY . .
-WORKDIR flask_app
+WORKDIR /app/flask_app
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
