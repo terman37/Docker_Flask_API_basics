@@ -11,9 +11,19 @@ __pycache__
 
 ### VsCode ###
 .vscode
+.vs
+debug
 
 ### Datas ###
 *data
 
 ### Notebooks ###
 .ipynb_checkpoints
+
+### Logs ###
+*.log*
+logs
+
+### Tests ###
+.pytest_cache
+.tox

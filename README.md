@@ -1,88 +1,88 @@
-# Docker_Flask_API_basics
 
-Basic Flask API, using a dummy linear regression model (cf training folder)
 
-Running on ubuntu server 18.04 VM.
+## Python
 
-### Flask/Gunicorn
+### Install Python
 
-#### Install/config/test
+- from https://www.python.org/downloads/
 
-Install python
 
-```bash
-sudo apt install python3
-sudo apt install python3-pip
-```
 
-upgrade pip
+## Virtual Environments
 
-```bash
-python -m pip install --upgrade pip
-```
+- Create
 
-Structure
+  ```
+  python -m venv path\to\env
+  ```
 
-```bash
-mkdir venvs
-```
+- Activate
 
-Create venv
+  ```
+  path\to\env\Scripts\activate.bat
+  ```
 
-```bash
-python3.7 -m venv ~/venvs/flask_env
-```
+- Deactivate
 
-Activate venv windows
+  ```
+  path\to\env\Scripts\deactivate.bat
+  ```
 
-```bash
-source ~/venvs/flask_env/bin/activate
-```
 
-Install requirements
+
+## Jupyter
+
+### Install Jupyter (not in env)
 
 ```
-pip install -r ~Flask_Rest_API/flask_app/requirements.txt
+pip install jupyter-lab
 ```
 
-Git Clone 
+### Default Startup Folder
 
-```bash
-git config --global user.name="My Name"
-git config --global user.email=My@email
-git clone https://github.com/terman37/Flask_Rest_API.git
-```
+- generate config file
 
-Run server
+  ```
+  jupyter notebook –generate-config
+  ```
 
-```bash
-cd ~/Flask_Rest_API/flask_app/
-gunicorn -w 1 -b 0.0.0.0:8000 wsgi:server
-```
+- uncomment / modify in %USERPROFILE%/.jupyter/jupyter_notebook_config.py
 
-Query the API: (brower or postman...)
+  ```
+  #c.NotebookApp.notebook_dir = ''
+  ```
 
-```
-http://<serverIP>:8000/predictln/?x=3.25
-```
-
-should return a value ;-) in json format ex: {"duration":0.0006844997406005859,"pred":17.703137442608288}
+### Install IPyKernel (for each env)
 
 ```
-http://<serverIP>:8000/
+pip install ipykernel
 ```
 
-should return an amazing "Hello World" :-)
+- add environment to use it in Jupyter
+
+  ```
+  python -m ipykernel install --user --name=display_name
+  ```
+
+- list existing env
+
+  ```
+  jupyter kernelspec list
+  ```
+
+- remove env
+
+  ```
+  jupyter kernelspec uninstall myenv
+  ```
 
 
 
-
-
-### Docker
+## Docker
 
 Make it run on Docker:
 
-#### Build the docker container 
+### Build the docker container 
 
 from Dockerfile directory run: (**do not forget the dot at the end**)
 
@@ -107,8 +107,6 @@ check in browser
 ```
 localhost/predictln/?x=8.65
 ```
-
-
 
 
 
